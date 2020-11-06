@@ -1,20 +1,27 @@
-import React from "react";
+// controlled component tracks user input and remaining chars
+import React from "react"
 
-class TwitterMessage extends React.Component {
+export default class TwitterMessage extends React.Component {
   constructor() {
-    super();
+    super()
+    this.state = {tweet: ''}
+  }
 
-    this.state = {};
+  handleTyping = event => {
+    this.setState({tweet: event.target.value})
   }
 
   render() {
     return (
       <div>
         <strong>Your message:</strong>
-        <input type="text" name="message" id="message" />
+        <input type="text" name="message" id="message"
+          value={this.state.tweet}
+          onChange={this.handleTyping}
+        /><br></br>
+        Remaining chars: {this.props.maxChars - this.state.tweet.length}
       </div>
-    );
+    )
   }
-}
 
-export default TwitterMessage;
+}
