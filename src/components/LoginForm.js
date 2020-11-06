@@ -18,6 +18,7 @@ export default class LoginForm extends React.Component {
     event.preventDefault()
     if (this.state.username.length > 0 && this.state.password.length > 0) {
       this.props.handleLogin(this.state)
+      this.setState({username: '', password: ''})
     }
   }
 
